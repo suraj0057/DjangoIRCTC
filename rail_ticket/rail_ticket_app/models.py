@@ -13,6 +13,8 @@ class Train(models.Model):
        sleeperWaiting=models.BigIntegerField(default=0)
        acAvailable=models.BigIntegerField(default=0)
        acWaiting=models.BigIntegerField(default=0)
+       sleeperPrice=models.BigIntegerField(default=0)
+       acPrice=models.BigIntegerField(default=0)
        
 
 class Ticket_details(models.Model):

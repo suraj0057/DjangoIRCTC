@@ -8,5 +8,7 @@ urlpatterns = [
     path('pnr',views.check_PNR),
     path('chart',views.chart),
     path('search',views.search),
+    path('book_now',views.book_ticket),
+    path('book_ticket',views.book_ticket),
 ]
 
