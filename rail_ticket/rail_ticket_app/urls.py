@@ -10,5 +10,6 @@ urlpatterns = [
     path('search',views.search),
     path('book_now',views.book_ticket),
     path('book_ticket',views.book_ticket),
+    path('test',views.test),
 ]
 

@@ -34,6 +34,9 @@ def search(request):
 def check_PNR(request):
      return render(request,'pnr.html')
 
+def test(request):
+     return render(request,'test2.html')
+
 def chart(request):
      return render(request,'reservation_chart.html')
 
