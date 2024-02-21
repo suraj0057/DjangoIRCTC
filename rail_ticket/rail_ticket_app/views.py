@@ -34,18 +34,12 @@ def search(request):
 def check_PNR(request):
      return render(request,'pnr.html')
 
-def test(request):
-     return render(request,'test2.html')
 
 def chart(request):
      return render(request,'reservation_chart.html')
 
 def ticket_details(request):
      return HttpResponse("ok")
-
-def selectedClass(request,classtype, price):
-     context={}
-     return render(request,'show_train.html',context)
 
 def book_ticket(request):
      context={}
@@ -55,14 +49,30 @@ def book_ticket(request):
      sourceStn=request.POST['sourceStn']
      destStn=request.POST['destStn']
      jDate=request.POST['jDate']
+     tFare=request.POST['tFare']
      context['seletedClass']=seletedClass
      context['trainContext']=trainContext
      context['arrivalTime']=arrivalTime
      context['sourceStn']=sourceStn
      context['destStn']=destStn
      context['jDate']=jDate
+     context['tFare']=tFare
      return render(request,'book_ticket.html',context)
     # else:          
      #     return redirect('/user_login')
      
-# Create your views here.
+def confirm_ticket(request):
+     payment =request.POST['payment']
+     context={}
+     context['payment']=payment
+     if request.method== 'POST':   
+          status  = request.POST.get('paymentStatus')
+          if status == 'success':
+            # Redirect to the print_ticket
+            return print_ticket(request,context)
+          else:
+            # show error pop and go back to home page
+            return render(request, 'payment.html',context)  
+
+def print_ticket(request,context):
+     return render(request,'print_ticket.html',context)
